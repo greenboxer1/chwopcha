@@ -21,14 +21,3 @@ jobs:
             cd ~/chwopcha
             echo '------------------------Copy repo------------------------'
             git pull origin main || { echo "Git pull failed"; exit 1; }
-            echo '------------------------Switch to Node.js 20------------------------'
-            export NVM_DIR="$HOME/.nvm"
-            source "$NVM_DIR/nvm.sh"
-            nvm use 20
-            echo '------------------------Npm install------------------------'
-            npm cache clean --force
-            npm install
-            echo '------------------------Restart discord bot------------------------'
-            pm2 reload chwopcha
-            echo '------------------------Check logs------------------------'
-            pm2 logs chwopcha --lines 10
